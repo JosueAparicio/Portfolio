@@ -793,6 +793,13 @@ ABOUT SECTION
     color: var(--text-black-600);
 
  }
+
+ .about-section .timeline .timeline-item-inner .span-link{
+    color: var(--skin-color);
+
+ }
+
+
  .about-section .timeline .timeline-item-inner .certificate:hover{
     cursor: pointer;
     list-style: var(--text-black-700);
