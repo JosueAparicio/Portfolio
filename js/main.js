@@ -1,66 +1,67 @@
 // navigation menu
-(()=>{
+(() => {
 
-        const hamburguerBtn = document.querySelector('.hamburguer-btn'),
+    const hamburguerBtn = document.querySelector('.hamburguer-btn'),
         navMenu = document.querySelector('.nav-menu'),
         closeNavBtn = navMenu.querySelector('.close-nav-menu');
 
-        hamburguerBtn.addEventListener('click', showNavMenu);
-        closeNavBtn.addEventListener('click', hideNavMenu);
+    hamburguerBtn.addEventListener('click', showNavMenu);
+    closeNavBtn.addEventListener('click', hideNavMenu);
 
-        function showNavMenu(){
-            navMenu.classList.add('open');
-            bodyScrollingToggle();
-        }
-        function hideNavMenu(){
-            navMenu.classList.remove('open');
-            fadeOutEffect();
-            bodyScrollingToggle();
-        }
+    function showNavMenu() {
+        navMenu.classList.add('open');
+        bodyScrollingToggle();
+    }
 
-        function fadeOutEffect(){
-            document.querySelector('.fade-out-effect').classList.add('active');
-            setTimeout(()=>{
-                document.querySelector('.fade-out-effect').classList.remove('active');
+    function hideNavMenu() {
+        navMenu.classList.remove('open');
+        fadeOutEffect();
+        bodyScrollingToggle();
+    }
 
-            }, 300)
-        }
+    function fadeOutEffect() {
+        document.querySelector('.fade-out-effect').classList.add('active');
+        setTimeout(() => {
+            document.querySelector('.fade-out-effect').classList.remove('active');
 
-       document.addEventListener('click', (event) =>{
-           if(event.target.classList.contains('link-item')){
-                if(event.target.hash !==''){
-                    event.preventDefault();
-                    const hash = event.target.hash;
-                    document.querySelector('.section.active').classList.add('hide');
-                    document.querySelector('.section.active').classList.remove('active');
+        }, 300)
+    }
 
-                    document.querySelector(hash).classList.add('active');
-                    document.querySelector(hash).classList.remove('hide');
+    document.addEventListener('click', (event) => {
+        if (event.target.classList.contains('link-item')) {
+            if (event.target.hash !== '') {
+                event.preventDefault();
+                const hash = event.target.hash;
+                document.querySelector('.section.active').classList.add('hide');
+                document.querySelector('.section.active').classList.remove('active');
 
-                    navMenu.querySelector('.active').classList.add('outer-shadow', 'hover-in-shadow');
-                    navMenu.querySelector('.active').classList.remove('active', 'inner-shadow');
+                document.querySelector(hash).classList.add('active');
+                document.querySelector(hash).classList.remove('hide');
 
-                    if(navMenu.classList.contains('open')){
-                        event.target.classList.add('active', 'inner-shadow');
-                        event.target.classList.remove('outer-shadow', 'hover-in-shadow');
-    
-                        hideNavMenu();
-                    }else{
-                        let navItems = navMenu.querySelectorAll('.link-item');
-                        navItems.forEach((item)=>{
-                            if(hash === item.hash){
-                                item.classList.add('active', 'inner-shadow');
-                                item.classList.remove('outer-shadow', 'hover-in-shadow');           
-                            }
-                        })
-                        fadeOutEffect();
-                    }
-                    //add hash (#)
-                    window.location.hash = hash;
+                navMenu.querySelector('.active').classList.add('outer-shadow', 'hover-in-shadow');
+                navMenu.querySelector('.active').classList.remove('active', 'inner-shadow');
 
+                if (navMenu.classList.contains('open')) {
+                    event.target.classList.add('active', 'inner-shadow');
+                    event.target.classList.remove('outer-shadow', 'hover-in-shadow');
+
+                    hideNavMenu();
+                } else {
+                    let navItems = navMenu.querySelectorAll('.link-item');
+                    navItems.forEach((item) => {
+                        if (hash === item.hash) {
+                            item.classList.add('active', 'inner-shadow');
+                            item.classList.remove('outer-shadow', 'hover-in-shadow');
+                        }
+                    })
+                    fadeOutEffect();
                 }
-           }
-       }) 
+                //add hash (#)
+                window.location.hash = hash;
+
+            }
+        }
+    })
 
 })();
 
@@ -156,7 +157,7 @@ portfolio filter & popup
 
     closeBtn.addEventListener('click', () => {
         popupTogle();
-        if(projectDetailsContainer.classList.contains('active')){
+        if (projectDetailsContainer.classList.contains('active')) {
             popupDetailsToggle();
         }
     })
@@ -190,8 +191,8 @@ portfolio filter & popup
         popup.querySelector('.pp-counter').innerHTML = (slideIndex + 1) + ' of ' + screenShots.length;
     }
 
-    certificates.forEach((item) =>{
-        item.addEventListener('click', (event)=>{
+    certificates.forEach((item) => {
+        item.addEventListener('click', (event) => {
             console.log(event.target.getAttribute('data-screenshots'));
             let img = popupCert.querySelector('.img-cert');
             img.src = event.target.getAttribute('data-screenshots');
@@ -219,9 +220,9 @@ portfolio filter & popup
         popupSlideshow();
     })
 
-    function popupDetails(){
+    function popupDetails() {
         //get the project details
-        if(!portfolioItems[itemIndex].querySelector('.portfolio-item-details')){
+        if (!portfolioItems[itemIndex].querySelector('.portfolio-item-details')) {
             projectDetailsBtn.style.display = 'none';
             return;
         }
@@ -263,68 +264,159 @@ portfolio filter & popup
  * -----------------
  */
 
- (()=>{
+(() => {
 
     const sliderContainer = document.querySelector('.testi-slider-container'),
-    slides = sliderContainer.querySelectorAll('.testi-item'),
-    sliderWidth = sliderContainer.offsetWidth,
-    prevBtn = document.querySelector('.testi-slider-nav .prev'),
-    nextBtn = document.querySelector('.testi-slider-nav .next'),
-    activeSlide = sliderContainer.querySelector('.testi-item.active');
+        slides = sliderContainer.querySelectorAll('.testi-item'),
+        sliderWidth = sliderContainer.offsetWidth,
+        prevBtn = document.querySelector('.testi-slider-nav .prev'),
+        nextBtn = document.querySelector('.testi-slider-nav .next'),
+        activeSlide = sliderContainer.querySelector('.testi-item.active');
     let slideIndex = Array.from(activeSlide.parentElement.children).indexOf(activeSlide);
 
 
-    slides.forEach((slide)=>{
+    slides.forEach((slide) => {
         slide.style.width = sliderWidth + 'px';
     })
     sliderContainer.style.width = sliderWidth * slides.length + 'px';
 
-    nextBtn.addEventListener('click', ()=>{
-        if(slideIndex === slides.length-1){
+    nextBtn.addEventListener('click', () => {
+        if (slideIndex === slides.length - 1) {
             slideIndex = 0;
-        }else{
-            slideIndex ++;
+        } else {
+            slideIndex++;
         }
         slider();
     })
 
-    prevBtn.addEventListener('click', ()=>{
-        if(slideIndex === 0 ){
-            slideIndex = slides.length-1;
-        }else{
-            slideIndex --;
+    prevBtn.addEventListener('click', () => {
+        if (slideIndex === 0) {
+            slideIndex = slides.length - 1;
+        } else {
+            slideIndex--;
         }
         slider();
     })
 
-    function slider(){
+    function slider() {
         sliderContainer.querySelector('.testi-item.active').classList.remove('active');
         slides[slideIndex].classList.add('active');
-        sliderContainer.style.marginLeft = - (sliderWidth * slideIndex) + 'px';
+        sliderContainer.style.marginLeft = -(sliderWidth * slideIndex) + 'px';
     }
 
     slider();
 
- })();
+})();
 
- (()=>{
+(() => {
 
     const sections = document.querySelectorAll('.section');
-    sections.forEach((section)=>{
-        if(!section.classList.contains('active')){
+    sections.forEach((section) => {
+        if (!section.classList.contains('active')) {
             section.classList.add('hide')
         }
     })
 
- })();
+})();
 
- window.addEventListener('load', ()=>{
-     document.querySelector('.preloader').classList.add('fade-out');
-     setTimeout(()=>{
-        document.querySelector('.preloader').style.display= 'none';
-     }, 600)
- })
+window.addEventListener('load', () => {
+    document.querySelector('.preloader').classList.add('fade-out');
+    setTimeout(() => {
+        document.querySelector('.preloader').style.display = 'none';
+    }, 600)
+})
 
- function certPopup(){
+function certPopup() {
     popupCert();
+}
+
+function sendEmail(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('txt-name'),
+        email = document.getElementById('txt-email'),
+        message = document.getElementById('txt-message'),
+        asunto = document.getElementById('txt-asunt');
+
+    if (name.value === '' || email.value === '' || message.value === '' || asunto.value === '') {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Fill in all the fields',
+            showConfirmButton: false,
+            timer: 1500
+        })
+
+    }else{
+
+
+        var send = {
+            userSupport: 'Josue Aparicio',
+            emailSupport: 'josue9aparicio@gmail.com',
+            nameContact: name.value,
+            lastContact: ' ',
+            emailContact: email.value,
+            message: message.value,
+            phoneContact: ' '
+        }
+        console.log(send);
+        let timerInterval
+        Swal.fire({
+          title: 'Sending!',
+          html: 'Please wait',
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading()
+            timerInterval = setInterval(() => {
+              const content = Swal.getHtmlContainer()
+              if (content) {
+                const b = content.querySelector('b')
+                if (b) {
+                  b.textContent = Swal.getTimerLeft()
+                }
+              }
+            }, 100)
+          },
+          willClose: () => {
+            clearInterval(timerInterval)
+          }
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            console.log('I was closed by the timer')
+          }
+          fetch('https://backend-hiperefe.herokuapp.com/supportEmail', {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(send), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+        .catch(error => {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Ups, Try Again Later',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        })
+        .then(response => {
+            name.value = '';
+            email.value = '';
+            message.value = '';
+            asunto.value = '';
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'success',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            console.log('Success:', response)
+        });
+        })
+    }
+
 }

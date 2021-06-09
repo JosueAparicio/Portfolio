@@ -159,10 +159,14 @@
 
           <!--social media-->
           <div class="social-links">
-            <a href="#" class="outer-shadow hover-in-shadow"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="outer-shadow hover-in-shadow"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="outer-shadow hover-in-shadow"><i class="fab fa-github"></i></a>
-            <a href="#" class="outer-shadow hover-in-shadow"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.facebook.com/josue.aparicio.148" class="outer-shadow hover-in-shadow"><i
+                class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/JosueAparicio09" class="outer-shadow hover-in-shadow"><i
+                class="fab fa-twitter"></i></a>
+            <a href="https://github.com/JosueAparicio" class="outer-shadow hover-in-shadow"><i
+                class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/josué-aparicio-977194200/" class="outer-shadow hover-in-shadow"><i
+                class="fab fa-linkedin-in"></i></a>
 
 
           </div>
@@ -366,11 +370,14 @@
                     <h3>Certificaciones</h3>
                     <p><span data-screenshots="img/certificates/masterframe.jpg" class="certificate span-link">Máster en
                         Frameworks: Angular, React & Vue</span></p>
-                    <p><span data-screenshots="img/certificates/pwa.jpg" class="certificate span-link">Curso de aplicaciones web
+                    <p><span data-screenshots="img/certificates/pwa.jpg" class="certificate span-link">Curso de
+                        aplicaciones web
                         progresivas PWA Responsive + Angular PWA</span></p>
-                    <p><span data-screenshots="img/certificates/aigaming.jpg" class="certificate span-link">AI Gaming Microsoft
+                    <p><span data-screenshots="img/certificates/aigaming.jpg" class="certificate span-link">AI Gaming
+                        Microsoft
                         Event</span></p>
-                    <p><span data-screenshots="img/certificates/hackerrank.jpg" class="certificate span-link">JavaScript Básico de
+                    <p><span data-screenshots="img/certificates/hackerrank.jpg" class="certificate span-link">JavaScript
+                        Básico de
                         HackerRank</span></p>
 
                   </div>
@@ -817,24 +824,25 @@
             <div class="row">
               <div class="w-50">
                 <div class="input-group outer-shadow hover-in-shadow">
-                  <input type="text" placeholder="Nombre" class="input-control">
+                  <input id="txt-name" type="text" placeholder="Nombre" class="input-control">
                 </div>
                 <div class="input-group outer-shadow hover-in-shadow">
-                  <input type="email" placeholder="Correo" class="input-control">
+                  <input id="txt-email" type="email" placeholder="Correo" class="input-control">
                 </div>
                 <div class="input-group outer-shadow hover-in-shadow">
-                  <input type="text" placeholder="Asunto" class="input-control">
+                  <input id="txt-asunt" type="text" placeholder="Asunto" class="input-control">
                 </div>
               </div>
               <div class="w-50">
                 <div class="input-group outer-shadow hover-in-shadow">
-                  <textarea class="input-control" placeholder="Mensaje"></textarea>
+                  <textarea id="txt-message" class="input-control" placeholder="Mensaje"></textarea>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="submit-btn">
-                <button type="submit" class="btn-1 outer-shadow hover-in-shadow">Enviar Mensaje</button>
+                <button type="submit" class="btn-1 outer-shadow hover-in-shadow" onclick="sendEmail(event)">Enviar
+                  Mensaje</button>
               </div>
             </div>
           </form>
@@ -918,10 +926,11 @@
 
   <!-- main js -->
   <script src="js/main.js"></script>
-  <script src="js/style-switcher.js"></script>
 
   <!-- style switcher js -->
   <script src="js/style-switcher.js"></script>
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
