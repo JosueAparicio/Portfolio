@@ -384,9 +384,10 @@ function sendEmail(e) {
         }).then((result) => {
           /* Read more about handling dismissals below */
           if (result.dismiss === Swal.DismissReason.timer) {
-            console.log('I was closed by the timer')
           }
-          fetch('https://backend-hiperefe.herokuapp.com/supportEmail', {
+
+        })
+        fetch('https://backend-hiperefe.herokuapp.com/supportEmail', {
             method: 'POST', // or 'PUT'
             body: JSON.stringify(send), // data can be `string` or {object}!
             headers: {
@@ -416,7 +417,6 @@ function sendEmail(e) {
             })
             console.log('Success:', response)
         });
-        })
     }
 
 }
