@@ -44,12 +44,12 @@ window.addEventListener('load', ()=>{
 /**----------------change lang-------------------------- */
 const changeLang = document.querySelector('.change-lang');
 changeLang.addEventListener('click', ()=>{
-    if(window.location.pathname == '/Portfolio/en/index.html'){
+    if(window.location.pathname == '/en/index.html'){
 
-        window.location.pathname = '/Portfolio/index.html';
+        window.location.pathname = '/index.html';
 
     }else{
-        window.location.pathname = '/Portfolio/en/index.html';
+        window.location.pathname = '/en/index.html';
     }
 
     console.log(window.location.pathname);
