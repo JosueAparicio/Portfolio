@@ -52,6 +52,4 @@ changeLang.addEventListener('click', ()=>{
         window.location.pathname = '/en/index.html';
     }
 
-    console.log(window.location.pathname);
-
 })
